@@ -2,7 +2,7 @@ import struct, os
 
 game = 'ねえちゃん、もう出ちゃうよ！～淫姉は俺の愛玩具～'
 oldarc = 'data.fpk'
-nowarc = 'data.cn_'
+newarc = 'data.cn_'
 cn = './CN\\'
 en = False
 def from_bytes(a: bytes):
@@ -24,10 +24,11 @@ def name():
         x = x ^ (key[i % 4])
         f.write(struct.pack('B', x))
     f.close()
+name()
 files = os.listdir(cn)
 filecount = len(files)
 print(hex(filecount))
-f = open('data.cn_', 'wb')
+f = open(newarc, 'wb')
 c = 0X80000000
 print(hex((c+filecount)))
 f.write(struct.pack('I', filecount + c))
